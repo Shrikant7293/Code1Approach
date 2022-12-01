@@ -1,0 +1,55 @@
+﻿@model EmployeeViewModel;
+
+<h3>Create Employee View</h3>
+<div class="container">
+
+    <div class="row">
+        <form method="post" asp-action="Create" asp-controller="Employee">
+            <div class="col-md-6  offset-3">
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+
+
+
+                <div class="form-group">
+                    <label asp-for="@Model.Name"></label>
+                    <input asp-for="@Model.Name" class="form-control" />
+                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                </div>
+
+                <br />
+
+                <div class="form-group">
+                    <label asp-for="@Model.Email"></label>
+                    <input asp-for="@Model.Email" class="form-control" />
+                    <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                </div>
+
+                <br />
+
+                <div class="form-group">
+                    <label asp-for="DepartmentId"></label>
+                    <select asp-for="DepartmentId" class="form-control">
+
+                        <option value="">-Select Option-</option>
+                        @{
+                            foreach(var dept in ViewBag.Departments )
+                            {
+                                <option value="@dept.Id">@dept.Name</option>
+                            }
+                        }
+                    </select>
+                    <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                </div>
+
+                <br />
+
+                <div class="form-group">
+                    <button class="btn btn-primary" style="margin-left:220px">Submit</button>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
